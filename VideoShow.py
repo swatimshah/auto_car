@@ -1,5 +1,6 @@
 from threading import Thread
 import cv2
+import time
 
 class VideoShow:
     """
@@ -23,7 +24,10 @@ class VideoShow:
             dim = (width, height)
             resized = cv2.resize(self.frame, dim, interpolation = cv2.INTER_AREA)
 
+            print("show - start", round(time.time(), 3))  	
             cv2.imshow("Video", resized)
+            print("show - end", round(time.time(), 3))  
+
             if cv2.waitKey(1) == ord("q"):
                 self.stopped = True
 
